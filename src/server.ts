@@ -17,4 +17,9 @@ async function startServer () : Promise<void>{
 fServer.get('/health', (req, res) => {
     res.send({status: 'ok'})
 });
+
+fServer.get('/ping', (req,res)=> {
+    res.send({message: 'pong'})
+})
 startServer();
+
