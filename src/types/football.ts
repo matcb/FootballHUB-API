@@ -1,21 +1,37 @@
-interface ITeam {
+export interface ITeam {
     id: number;
     name: string;
     shortName: string;
     crest: string;
 }
 
-interface IScore {
+export interface IScore {
     home: number | null;
     away: number | null;
 }
 
-interface IMath {
+export interface IMatch {
     id: number;
     utcDate: string;
-    status: string;
+    status: MatchStatus;
     homeTeam: ITeam;
     awayTeam: ITeam;
     score: IScore;
-
 }
+
+export interface IStanding {
+    position: number;
+    team: ITeam;
+    playedGames: number;
+    won: number;
+    draw: number;
+    lost: number;
+    points: number;
+    goalsFor: number;
+    goalsAgainst: number;
+    goalDifference: number;
+}
+
+export type MatchStatus =  "TIMED" | "SCHEDULED" | "IN_PLAY" | "FINISHED" | "POSTPONED";
+
+
