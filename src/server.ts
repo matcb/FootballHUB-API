@@ -4,22 +4,25 @@ const fServer = fastify({logger: true});
 
 async function startServer () : Promise<void>{
 
+   
     try
     {
-        await fServer.listen({port: 3000})
+         fServer.get('/', (req, res) => {
+        res.send({status: 'ok'})
+        });
+
+        fServer.get('/ping', (req,res)=> {
+        res.send({message: 'pong'})
+        })
+        await fServer.listen({port:3000})
     }
     catch(err)
     {
+        
         fServer.log.error(err);
-        process.exit();
+        process.exit(1);
     }
 }
-fServer.get('/health', (req, res) => {
-    res.send({status: 'ok'})
-});
 
-fServer.get('/ping', (req,res)=> {
-    res.send({message: 'pong'})
-})
 startServer();
 
