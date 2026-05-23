@@ -5,9 +5,24 @@ export interface ITeam {
     crest: string;
 }
 
+
+export type Winner = "DRAW" | "HOME" | "AWAY" | null;
+export type Duration = "REGULAR" | "EXTRA_TIME" | "PENALTY";
+export type MatchStatus =  "TIMED" | "SCHEDULED" | "IN_PLAY" | "FINISHED" | "POSTPONED";
+
+
+export interface Time {
+   home: number | null ;
+   away: number | null ;
+}
+
+
 export interface IScore {
-    home: number | null;
-    away: number | null;
+    winner: Winner;
+    duration: Duration;
+    halfTime:Time;
+    fullTime:Time;
+    
 }
 
 export interface IMatch {
@@ -32,6 +47,5 @@ export interface IStanding {
     goalDifference: number;
 }
 
-export type MatchStatus =  "TIMED" | "SCHEDULED" | "IN_PLAY" | "FINISHED" | "POSTPONED";
 
 
