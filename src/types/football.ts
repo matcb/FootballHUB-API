@@ -10,6 +10,11 @@ export type Winner = "DRAW" | "HOME" | "AWAY" | null;
 export type Duration = "REGULAR" | "EXTRA_TIME" | "PENALTY";
 export type MatchStatus =  "TIMED" | "SCHEDULED" | "IN_PLAY" | "FINISHED" | "POSTPONED";
 
+export interface ResponseMatches {
+    filters: unknown ;
+    resultSet: unknown;
+    matches:IMatch[];
+}
 
 export interface Time {
    home: number | null ;

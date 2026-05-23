@@ -1,4 +1,5 @@
 import fastify from 'fastify';
+import { getReq } from './services/footballServiceAPI';
 
 const fServer = fastify({logger: true});
 
@@ -7,13 +8,18 @@ async function startServer () : Promise<void>{
    
     try
     {
-         fServer.get('/', (req, res) => {
+        if(!process.env.API_KEY){
+        throw new Error("Erro na chave de API")
+        }
+
+         fServer.get('/matches', (req, res) => {
         res.send({status: 'ok'})
         });
 
-        fServer.get('/ping', (req,res)=> {
+        fServer.get('/teams', (req,res)=> {
         res.send({message: 'pong'})
         })
+
         await fServer.listen({port:3000})
     }
     catch(err)
